@@ -6,7 +6,7 @@ SRC_DIR = src
 OBJ_DIR = obj
 
 # Encontra todos os arquivos .c
-SOURCES = $(wildcard *.c) $(wildcard $(SRC_DIR)/*.c)
+SOURCES = $(wildcard src/*.c)
 
 # Define o compilador e as bibliotecas da Raylib
 CC = gcc
