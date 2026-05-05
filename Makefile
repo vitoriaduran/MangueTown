@@ -1,22 +1,23 @@
-# Nome do seu jogo
-PROJECT_NAME = MangueKids
+# 1. Nome do executável
+TARGET = MangueTown
 
-# Localização dos arquivos
+# 2. Caminhos
 SRC_DIR = src
-OBJ_DIR = obj
+INC_DIR = include
+RAYLIB_PATH = C:/raylib/raylib/src
 
-# Encontra todos os arquivos .c
-SOURCES = $(wildcard src/*.c)
+# 3. COMANDO COMPATÍVEL (Funciona no terminal do w64devkit/bash)
+# Procura todos os arquivos .c em src e suas subpastas
+SOURCES = $(shell find $(SRC_DIR) -name "*.c")
 
-# Define o compilador e as bibliotecas da Raylib
-CC = gcc
-CFLAGS = -Wall -std=c99 -Wno-missing-braces
-LIBS = -lraylib -lopengl32 -lgdi32 -lwinmm
+# 4. Flags e Bibliotecas
+# Adicionamos -mconsole para garantir que ele use o main() e não WinMain
+CFLAGS = -Wall -std=c99 -I$(INC_DIR) -I$(RAYLIB_PATH)
+LDFLAGS = -L$(RAYLIB_PATH) -lraylib -lopengl32 -lgdi32 -lwinmm -lcomdlg32 -lole32 -mconsole
 
-# Comando principal
+# 5. Regra de Compilação
 all:
-	$(CC) $(SOURCES) -o $(PROJECT_NAME).exe $(CFLAGS) $(LIBS)
+	gcc $(SOURCES) -o $(TARGET).exe $(CFLAGS) $(LDFLAGS)
 
-# Limpar arquivos gerados
 clean:
-	del $(PROJECT_NAME).exe
+	rm -f $(TARGET).exe
