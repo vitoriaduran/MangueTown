@@ -3,7 +3,6 @@
 #include "cenarios.h"
 #include "plateia.h"
 
-
 void desenhar_hud(GameState* gs) {
     // barra superior
     DrawRectangle(0, 0, SCREEN_W, 52, COR_HUD_BG);

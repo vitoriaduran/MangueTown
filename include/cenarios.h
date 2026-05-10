@@ -6,6 +6,8 @@
 #include "mochila.h"   
 #include "banda.h"
 #include "plateia.h"
+#include "historia.h"
+#include "setlist.h"
 
 
 // definições de Cores Temáticas 
@@ -39,14 +41,20 @@ typedef struct{
     int numMusicos;
     char msgTela[80];
     float msgTimer;
+    float zezX, zezY;
 
     FilaPlateia plateia;
     Musico *banda;
     mochila mochila;
     Fase *faseAtual;
+    Historia *arvoreHistorias;
+    Setlist   setlist;
     
     bool uiMochila;
     bool uiBanda;
+    bool uiHistoria;
+    bool uiSetlist;
+    bool jogoRodando;
  
 }GameState;
 
