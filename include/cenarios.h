@@ -2,9 +2,13 @@
 #define CENARIOS_H
 
 #include "raylib.h"
-#include <math.h>
+#include "mapa.h"
+#include "mochila.h"   
+#include "banda.h"
+#include "plateia.h"
 
-// --- Definições de Cores Temáticas ---
+
+// definições de Cores Temáticas 
 
 #define COR_MANGUE_RAIZ  (Color){ 75, 55, 35, 255 }
 #define COR_MANGUE_FOLHA (Color){ 30, 95, 45, 255 }
@@ -17,20 +21,33 @@
 #define COR_CALCADA      (Color){ 210, 195, 175, 255 }
 #define COR_PAREDE       (Color){ 235, 215, 185, 255 }
 #define COR_TELHADO      (Color){ 165, 75, 55, 255 }
+#define COR_HUD_BG            (Color){0,   0,   0,   150}
+#define COR_AMARELO_MANGUE    (Color){255, 220, 80,  255}
+#define COR_VERDE_MANGUE      (Color){80,  220, 100, 255}
+#define COR_ROXO_MANGUE       (Color){180, 120, 255, 255}
 
 #ifndef SCREEN_W
 #define SCREEN_W 850
 #define SCREEN_H 450
 #endif
 
-typedef struct{
-    int tamanho;
-}Plateia;
 
 typedef struct{
     float tempo;
     int saudeManguezal;
-    Plateia plateia;
+    int reputacao;
+    int numMusicos;
+    char msgTela[80];
+    float msgTimer;
+
+    FilaPlateia plateia;
+    Musico *banda;
+    mochila mochila;
+    Fase *faseAtual;
+    
+    bool uiMochila;
+    bool uiBanda;
+ 
 }GameState;
 
 //funcoes
